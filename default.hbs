@@ -31,6 +31,13 @@
     <div class="drawer-menu" class="pull-left">
         <div class="navigation">
             {{navigation}}
+            {{#get "tags" limit="all" include="count.posts"}}
+                {{#foreach tags}}
+                    <div class="menu-item-wrapper">
+                        <a href="{{url}}" class="menu-item menu-item--category nav-{{slug}}{{#if current}} active{{/if}}">{{name}} <span class="drawer__post-count">{{count.posts}}</span></a>
+                    </div>
+                {{/foreach}}
+            {{/get}}
         </div>
     </div>
 
