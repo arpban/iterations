@@ -90,7 +90,7 @@
 	z-index: 101;
 	transform: translateX(100%);
 	width: 300px;
-	padding-top: 0px;
+	padding-top: 10px;
 	transition: 400ms;
 	text-align: left;
 	font-family: $font-primary;
@@ -141,11 +141,12 @@ a.menu-item--category {
 .drawer__post-count {
 	background: #cdcdcd;
     color: #1b1b1b;
-    border-radius: 100%;
-    width: 22px;
-    height: 22px;
+    border-radius: 7px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
 	justify-content: center;
-	margin-left: 6px;
+	margin-left: 9px;
+	font-size: 13px;
 }

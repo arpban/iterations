@@ -1095,6 +1095,9 @@ article .fluid-width-video-container {
   max-width: 800px;
   margin: 30px auto; }
 
+.post--gallery .kg-width-wide {
+  margin: auto; }
+
 @media (max-width: 1090px) {
   article .kg-width-wide {
     margin-left: calc(-100vw / 2 + 670px / 2 + 40px);
@@ -1956,7 +1959,7 @@ nav.pagination {
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   width: 300px;
-  padding-top: 0px;
+  padding-top: 10px;
   transition: 400ms;
   text-align: left;
   font-family: "Roboto", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Helvetica Neue", sans-serif;
@@ -2006,9 +2009,9 @@ a.menu-item--category {
 .drawer__post-count {
   background: #cdcdcd;
   color: #1b1b1b;
-  border-radius: 100%;
-  width: 22px;
-  height: 22px;
+  border-radius: 7px;
+  width: 18px;
+  height: 18px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -2018,4 +2021,49 @@ a.menu-item--category {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-left: 6px; }
+  margin-left: 9px;
+  font-size: 13px; }
+
+.post--gallery .site-content {
+  margin-top: 0; }
+
+.post--gallery article header {
+  padding: 40px 0 20px;
+  margin-bottom: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .post--gallery article header h1 {
+    font-size: 24px;
+    max-width: 600px;
+    margin: 0; }
+  .post--gallery article header a {
+    color: #333;
+    width: 50px;
+    height: 50px;
+    display: block;
+    transition: all 0.2s; }
+    .post--gallery article header a:hover {
+      -webkit-transform: scale(1.05);
+              transform: scale(1.05); }
+    .post--gallery article header a svg {
+      width: 100%;
+      height: 100%;
+      stroke-width: 1; }
+
+.post--gallery article .post-full-content {
+  margin-bottom: 60px; }
+
+.post--gallery article h3 {
+  margin: 0 0 15px; }
+
+.post--gallery article ul {
+  margin: 0 auto 30px; }
+  .post--gallery article ul li {
+    margin-bottom: 5px; }

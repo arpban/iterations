@@ -796,6 +796,12 @@ article {
     }
 }
 
+.post--gallery {
+	.kg-width-wide {
+		margin: auto;
+	}
+}
+
 @media(max-width: 1090px){
 	article{
 		.kg-width-wide {
@@ -1189,3 +1195,5 @@ nav.pagination {
 /////////////////////////////////////////////////////
 
 @import "partials/drawer";
+
+@import "partials/post-gallery";
