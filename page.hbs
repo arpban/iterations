@@ -1,0 +1,191 @@
+{{!< default}}
+
+{{#post}}
+
+{{!-- Reading Progress --}}
+<progress id="reading-progress" class="progress" value="0">
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+</progress>
+
+{{!-- Site Header --}}
+<div class="post-view-header">
+	<div class="left">
+		{{#if @site.logo}}
+			<a href="{{@site.url}}">
+				<img class="post-view-header__logo" alt="site logo" src="{{@site.logo}}">                    
+			</a>
+		{{else}}
+			<h2 class="post-view-header__title"><a href="{{@site.url}}">{{@site.title}}</a></h2>
+		{{/if}}
+	</div>
+	<div class="right">
+		<div class="post-sharing-icons">
+			<div class="share-text">Share</div>
+			<div class="post-sharing-icons__wrapper">
+				{{!-- Twitter --}}
+				<a class="post-sharing-icon" href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
+					onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+					<span class="icon icon--twitter">{{> "icons/twitter"}}</span>
+					<span class="title">Twitter</span>
+				</a>
+
+				{{!-- Facebook --}}
+				<a class="post-sharing-icon " href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+					onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+					<span class="icon icon--facebook">{{> "icons/facebook"}}</span>
+					<span class="title">Facebook</span>
+				</a>
+
+				{{!-- Pinterest --}}
+				<a class="post-sharing-icon " href="http://pinterest.com/pin/create/link/?url={{url absolute="true"}}"
+					onclick="window.open(this.href, 'share-pinterest','width=580,height=296');return false;">
+					<span class="icon icon--pinterest">{{> "icons/pinterest"}}</span>
+					<span class="title">Pinterest</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{!-- Main Content --}}
+<div class="site-content">
+    <div class="wrapper-700">
+        <article class="{{post_class}}">
+            <header>
+            	{{!-- Feature Image --}}
+            	{{#if feature_image}}
+            		<img alt="{{title}}" src="{{feature_image}}">
+            	{{/if}}
+
+                <!-- Title --> 
+                <div class="post-title">{{title}}</div>
+            </header>
+
+            <!-- Post content -->
+            <section class="post-full-content">
+	            {{content}}
+	        </section>
+        </article>
+
+
+        <!-- Comments -->
+        {{!-- <h1 class="comments-header">Comments</h1>
+        <section class="post-comments">
+        	<div id="disqus_thread"></div>
+	        <script>
+	            var disqus_config = function () {
+	                this.page.url = '{{url absolute="true"}}';
+	                this.page.identifier = 'ghost-{{comment_id}}';
+	            };
+	            (function() {
+	                var d = document, s = d.createElement('script');
+	                s.src = 'https://test-apkdzgmqhj.disqus.com/embed.js';
+	                s.setAttribute('data-timestamp', +new Date());
+	                (d.head || d.body).appendChild(s);
+	            })();
+	        </script>
+        </section> --}}
+    </div>
+</div>
+
+{{/post}}
+
+{{> "footer"}}
+
+{{#contentFor "scripts"}}
+	<!-- Fitvids -->
+	<script type="text/javascript" src="{{asset "built/js/jquery.fitvids.js"}}"></script>
+
+	<!-- Highlight Share Scripts -->
+	<link rel="stylesheet" type="text/css" href="{{asset "highlight-share/highlight-share.css"}}">
+	<script type="text/javascript" src="{{asset "highlight-share/highlight-share.js"}}"></script>
+	<script type="text/javascript" src="{{asset "highlight-share/sharers/twitter.js"}}"></script>
+	<script type="text/javascript" src="{{asset "highlight-share/sharers/
+	facebook.js"}}"></script>
+	<script type="text/javascript" src="{{asset "highlight-share/sharers/linked-in.js"}}"></script>
+	<!-- Custom styles for highlight share popover -->
+	<style type="text/css">
+		.highlight-share-popover ul{
+			background: white;
+			color: #111;
+		}
+		.highlight-share-popover:before{
+			border-color: white transparent;
+		}
+		.highlight-share-popover ul li a:hover{
+			background: hsla(0, 0%, 63%, 0.25);
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    // Start fitVids
+		    var $postContent = $(".post-full-content");
+		    $postContent.fitVids();
+		    // End fitVids
+
+		    // ------------------------------------------------
+		    // Reading Progress  
+		    var progressBar = document.querySelector('#reading-progress');
+		    var lastScrollY = window.scrollY;
+		    var lastWindowHeight = window.innerHeight;
+		    var lastDocumentHeight = $(document).height();
+		    var ticking = false;
+
+		    function onScroll() {
+		        lastScrollY = window.scrollY;
+		        requestTick();
+		    }
+
+		    function onResize() {
+		        lastWindowHeight = window.innerHeight;
+		        lastDocumentHeight = $(document).height();
+		        requestTick();
+		    }
+
+		    function requestTick() {
+		        if (!ticking) {
+		            requestAnimationFrame(update);
+		        }
+		        ticking = true;
+		    }
+
+		    function update() {
+		        var trigger = window.scrollY;
+		        var triggerOffset = 35;
+		        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+		        progressBar.setAttribute('max', progressMax);
+		        progressBar.setAttribute('value', lastScrollY);
+
+		        ticking = false;
+		    }
+
+		    window.addEventListener('scroll', onScroll, {passive: true});
+		    window.addEventListener('resize', onResize, false);
+
+		    update();
+		    // Ends reading progress 
+		    // ------------------------------------------------------
+		    
+		    // Init Highlight Share
+		    var selectionShare = HighlightShare({
+			    selector: '.post-full-content',
+			    sharers: [HighlightShareViaTwitter, HighlightShareViaFacebook, HighlightShareViaLinkedIn]
+			});
+			selectionShare.init(); 
+
+			// Set up gallery if present in the article
+		    var images = document.querySelectorAll('.kg-gallery-image img');
+		    images.forEach(function (image) {
+		        var container = image.closest('.kg-gallery-image');
+		        var width = image.attributes.width.value;
+		        var height = image.attributes.height.value;
+		        var ratio = width / height;
+		        container.style.flex = ratio + ' 1 0%';
+		    });		
+		});
+	</script>
+{{/contentFor}}

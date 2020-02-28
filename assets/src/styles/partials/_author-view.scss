@@ -1,0 +1,192 @@
+.author-header__site-title{
+    padding: 20px 0;
+}
+
+.author-header__site-title h1{
+    font-family: "Helvetica", "Roboto", -apple-system, "BlinkMacSystemFont",
+        "Segoe UI", "Helvetica Neue", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.3em;
+    a {
+        color: $color-text;
+        &:hover {
+            color: $color-text;
+        }
+    }
+}
+
+.author-header__site-title img{
+    max-width: 150px;
+}
+
+.author-header-details{
+    padding: 53px 0 60px;
+}
+
+.author-template .author-header {
+    background: white;
+    color: $color-text;
+
+    &.with-cover-image {
+        background: black no-repeat center center;
+        background-size: cover;
+        color: white;
+        margin-bottom: 50px;
+    }
+
+    &.with-cover-image .overlay {
+        background: rgba(0, 0, 0, 0.5);
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-image {
+        background: white no-repeat center center;
+        background-size: cover;
+        height: 100px;
+        width: 100px;
+        border-radius: 6px;
+        border: 2px white solid;
+        margin-bottom: 20px;
+    }
+
+    &.with-cover-image {
+        .author-header-details .name {
+            color: white;
+        }
+        .author-header-details .bio {
+            color: white;
+        }
+        .author-header-details .meta .website .text a {
+            color: white;
+        }
+        .separator {
+            color: white;
+        }
+    }
+
+    .name {
+        font-family: "Helvetica", "Roboto", -apple-system, "BlinkMacSystemFont",
+            "Segoe UI", "Helvetica Neue", sans-serif;
+        font-size: 31px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        letter-spacing: -1.36px;
+        line-height: 42.5px;
+        color: $color-text;
+    }
+
+    .bio {
+        font-size: 20px;
+        color: $color-text-lighter;
+        max-width: 700px;
+        line-height: 29px;
+        font-weight: 400;
+        letter-spacing: -0.5px;
+    }
+
+    .meta {
+        margin-top: 20px;
+        text-align: left;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        .social-links {
+            margin: 10px 0px;
+            .link-with-svg {
+                margin-right: 4px;
+                .link-svg {
+                    svg {
+                        fill: $color-text-lighter;
+                        width: 19px;
+                        height: 19px;
+                        &:hover {
+                            fill: $color-text;
+                        }
+                    }
+                }
+                .rss {
+                    svg {
+                        width: 16px;
+                    }
+                }
+                .link-text {
+                    display: none;
+                }
+            }
+        }
+        .location,
+        .website {
+            margin: 10px 0px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: $color-text-lighter;
+            &:hover {
+                color: $color-text;
+            }
+            svg {
+                width: 19px;
+                height: 19px;
+                margin-right: 3px;
+            }
+            .text {
+                margin-bottom: 3px;
+                margin-left: 3px;
+            }
+        }
+    }
+
+    .separator {
+        font-size: 24px;
+        margin: 5px 10px;
+        color: $color-text-lighter;
+    }
+}
+
+.author-template {
+    .author-header.with-cover-image {
+        margin-bottom: 50px;
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        .meta {
+            .location,
+            .website {
+                color: white;
+            }
+            .social-links .link-with-svg .link-svg svg {
+                fill: white;
+            }
+        }
+        .author-header__site-title h1{
+            a {
+                color: white;
+                &:hover{
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .author-template {
+        .author-header .name {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .author-header .bio {
+            font-size: 16px;
+            line-height: 25px;
+        }
+        .author-header.with-cover-image {
+            margin-bottom: 15px;
+        }
+    }
+}

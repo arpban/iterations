@@ -1,0 +1,151 @@
+.drawer{
+    position: fixed;
+    top: 61px;
+    right: -16px;
+    background: $drawer-color;
+    padding: 12px 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 0 20px 5px #0000002b;
+	transition: right 0.25s;
+	z-index: 1;
+}
+
+.drawer.open{
+    right: 284px;
+    &:hover{
+        right: 284px;
+    }
+}
+
+.drawer:hover{
+    right: 0;
+}
+
+.drawer-handle {
+	position: relative;
+	z-index: 501;
+	width: 25px;
+	height: 28px;
+	cursor: pointer;
+	margin: 0 3px -10px 0;
+	span {
+		position: absolute;
+		cursor: pointer;
+		height: 2px;
+		width: 25px;
+		background: white;
+		position: absolute;
+		display: block;
+		content: "";
+		top: 0px;
+
+		&:before,
+		&:after {
+			cursor: pointer;
+			height: 2px;
+			width: 25px;
+			background: white;
+			position: absolute;
+			display: block;
+			content: "";
+			top: 0px;
+		}
+	}
+
+	span.second {
+		top: 7px;
+	}
+
+	span {
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		-ms-transition: all 0.2s ease;
+		-o-transition: all 0.2s ease;
+		transition: all 0.2s ease;
+
+		&:after {
+			-webkit-transition: all 0.2s ease;
+			-moz-transition: all 0.2s ease;
+			-ms-transition: all 0.2s ease;
+			-o-transition: all 0.2s ease;
+			transition: all 0.2s ease;
+			top: 16px;
+		}
+
+		&:before {
+			-webkit-transition: all 0.2s ease;
+			-moz-transition: all 0.2s ease;
+			-ms-transition: all 0.2s ease;
+			-o-transition: all 0.2s ease;
+			transition: all 0.2s ease;
+			top: 8px;
+		}
+	}
+}
+
+.drawer-menu {
+    position: fixed;
+    right: 0;
+	z-index: 101;
+	transform: translateX(100%);
+	width: 300px;
+	padding-top: 0px;
+	transition: 400ms;
+	text-align: left;
+	font-family: $font-primary;
+	font-weight: 400;
+	background: $drawer-color;
+	top: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+    visibility: hidden;
+	ul.nav {
+		list-style: none;
+		padding: 0;
+	}
+	a {
+		color: #d4d4d4;
+		display: block;
+		padding: 15px 25px;
+        font-size: 16px;
+        transition: all 0.1s;
+		&:hover {
+            color: white;
+            background: #ffffff26;
+        }
+        &.active{
+            color: white;
+            background: #ffffff26;
+        }
+	}
+	.nav-dropdown-menu {
+		left: 15px;
+		.nav-dropdown-menu-wrapper::before {
+			left: 20px;
+		}
+	}
+
+	&.open {
+		transform: translateX(0%);
+		visibility: visible;
+	}
+}
+
+.menu-item--category {
+	display: flex;
+	align-items: center;
+}
+
+.drawer__post-count {
+	background: #cdcdcd;
+    color: #1b1b1b;
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+	justify-content: center;
+	margin-left: 6px;
+}

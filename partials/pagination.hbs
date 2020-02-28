@@ -1,0 +1,46 @@
+<nav class="pagination" role="navigation">
+    {{#if prev}}
+	    <a class="page-number first" href="/">1</a>
+	    
+    	<span class="ellipses">...</span>
+
+        <a class="page-number" href="{{page_url prev}}">{{prev}}</a>
+    {{/if}}
+
+    <a href="{{page}}" class="page-number current">{{page}}</a>
+    
+    {{#if next}}
+        <a class="page-number" href="{{page_url next}}">{{next}}</a>
+	    
+	    <span class="ellipses">...</span>
+	    
+	    <a class="page-number last" href="{{page_url pages}}">{{pages}}</a>
+    {{/if}}
+</nav>
+
+{{#contentFor "scripts"}}
+<script>
+	var current_pagination = parseInt("{{page}}");
+	var total_pagination = parseInt("{{pages}}");
+	var prev_pagination = parseInt("{{prev}}");
+	var next_pagination = parseInt("{{next}}");
+
+	if(current_pagination == total_pagination-1){
+		let last_pagination_link = document.querySelector(".pagination .last");
+		last_pagination_link.style.display = "none";
+
+		let pagination_ellipses = document.querySelectorAll(".pagination .ellipses");
+		pagination_ellipses[1].style.display = "none";
+	}
+
+	if(current_pagination == 2){
+		let first_pagination_link = document.querySelector(".pagination .first");
+		first_pagination_link.style.display = "none";
+
+		let pagination_ellipses = document.querySelector(".pagination .ellipses");
+		pagination_ellipses.style.display = "none";
+	}
+
+	
+</script>
+{{/contentFor}}

@@ -1,0 +1,13 @@
+<header class="site-header">
+    <div class="wrapper-1400">
+        <div class="left">
+            {{#if @site.logo}}
+                <a href="{{@site.url}}">
+                    <img class="site-header__logo" alt="site logo" src="{{@site.logo}}">                    
+                </a>
+            {{else}}
+                <h2 class="site-header__title"><a href="{{@site.url}}">{{@site.title}}</a></h2>
+            {{/if}}
+        </div>
+    </div>
+</header>

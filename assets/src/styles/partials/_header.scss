@@ -1,0 +1,18 @@
+.site-header{
+
+}
+
+.site-header__title{
+    font-family: "Helvetica", "Roboto", -apple-system, "BlinkMacSystemFont",
+			"Segoe UI", "Helvetica Neue", sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: -1.36px;
+    line-height: 1.3em;
+    a {
+        color: $color-text;
+        &:hover {
+            color: $color-text;
+        }
+    }
+}

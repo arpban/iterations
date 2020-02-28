@@ -1,0 +1,43 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<!-- Home Page Header -->
+<div class="home-page-header">
+    <div class="wrapper-1400">
+        {{#if @site.logo}}
+            <a href="{{@site.url}}">
+                <img class="home-page-header__logo" alt="site logo" src="{{@site.logo}}">                    
+            </a>
+        {{else}}
+            <h1 class="home-page-header__title">{{@site.title}}</h1>
+        {{/if}}
+        <p class="home-page-header__description">{{@site.description}}</p>
+    </div>
+</div>
+
+<!-- Site Main Content -->
+<div class="site-content">
+    <div class="wrapper-1400">
+        <div class="post-feed">
+            <!-- Normal posts -->
+            {{#foreach posts}}
+                {{#unless featured}}
+                    {{> "post-card"}}
+                {{/unless}}
+            {{/foreach}}
+        </div>
+
+        {{pagination}}
+    </div>
+</div>
+
+<!-- Site Footer -->
+{{> "footer" }}
+
+{{#contentFor "scripts"}}
+<!-- Set's the current_page variable, which is used for adjusting the size of the post-cards -->
+<script type="text/javascript">
+    var current_page = "home-view";
+</script>
+{{/contentFor}}

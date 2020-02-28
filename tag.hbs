@@ -1,0 +1,51 @@
+{{!< default}} 
+
+<!-- Tag -->
+{{#tag}}
+<div class="tag-header {{#if feature_image}}with-cover-image{{/if}}" style="background-image: url({{feature_image}})">
+    <div class="overlay">
+        <div class="wrapper-1400">
+            <div class="tag-header__site-title">
+                {{#if @site.logo}}
+                    <a href="{{@site.url}}">
+                        <img class="tag-logo" alt="site logo" src="{{@site.logo}}">                    
+                    </a>
+                {{else}}
+                    <h1 class="tag-site-title"><a href="/">{{@site.title}}</a></h1>
+                {{/if}}
+            </div>
+
+            <div class="tag-details">
+                <h1 class="tag-title">{{name}}</h1>
+                <div class="tag-description">
+                    {{description}}
+                </div>
+                <small>
+                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+{{/tag}}
+                            
+<div class="site-content">
+    <div class="wrapper-1400">
+        <div class="post-feed">
+            <!-- All posts -->
+            {{#foreach posts}}
+                {{> "post-card"}}
+            {{/foreach}}
+        </div>
+
+        {{pagination}}
+    </div>
+</div>
+
+{{> "footer" }}
+
+{{#contentFor "scripts"}}
+    <script type="text/javascript">
+        var current_page = "tag-view";
+    </script>
+{{/contentFor}}
