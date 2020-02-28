@@ -1995,7 +1995,7 @@ nav.pagination {
             transform: translateX(0%);
     visibility: visible; }
 
-.menu-item--category {
+a.menu-item--category {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
